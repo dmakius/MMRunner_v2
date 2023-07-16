@@ -3,7 +3,7 @@ var player;
 var floor;
 
 MMRunner.GameState = {
-  create: function(){
+  create: function(){ 
     this.game.physics.startSystem(Phaser.Physics.P2);
 
     this.background = this.game.add.tileSprite(0, 0, 700, 500, 'background');
