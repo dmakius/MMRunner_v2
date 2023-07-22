@@ -3,10 +3,20 @@ import HighScore from './../models/HighScore.js';
 import Sort from './../helpers/sort.js';
 
 export default class PageController{
-    static async getGamePage(req, res){
+    static async getMegaManPage(req, res){
         var mobile = req.useragent.isMobile;
         var x = loggedIn(req, res);
         res.render('MegaManRunner',{loggedIn: x, mobile});
+    }
+    static async getAsteroidsPage(req, res){
+        var mobile = req.useragent.isMobile;
+        var x = loggedIn(req, res);
+        res.render('Asteroids',{loggedIn: x, mobile});
+    }
+    static async getMarioPage(req, res){
+        var mobile = req.useragent.isMobile;
+        var x = loggedIn(req, res);
+        res.render('VerticalMario',{loggedIn: x, mobile});
     }
     static async getLoginPage(req, res){
         var mobile = req.useragent.isMobile;

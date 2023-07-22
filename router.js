@@ -8,7 +8,9 @@ import auth from "./middleware/auth.js";
 const router = express.Router();
 
 //Pages
-router.get('/',pageController.getGamePage);
+router.get('/megaman',pageController.getMegaManPage);
+router.get('/mario',pageController.getMarioPage);
+router.get('/asteroids',pageController.getAsteroidsPage);
 router.get('/admin', auth, pageController.getAdminPage);
 router.get('/login', pageController.getLoginPage)
 router.get('/register', pageController.getRegistrationPage);

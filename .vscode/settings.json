@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "undefined/subscriptions/0f1d6e33-6e5c-4516-b830-ade630c1d9f8/resourceGroups/PhaserProjects/providers/Microsoft.Web/sites/MMRunner",
+    "appService.deploySubpath": "."
+}
