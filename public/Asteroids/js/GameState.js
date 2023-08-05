@@ -37,9 +37,12 @@ Asteroids.GameState = {
     this.fire = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     // this.background = this.game.add.tileSprite(0, 0, 480, 320, 'background');
     // this.background.autoScroll(-150, -20);
+    this.alienTimer = this.game.time.events.loop(2000, this.addAlien, this);
+    this.Aliens = this.add.group();
+
     this.initRocks();
     this.initBullets();
-    this.initAliens();
+    // this.initAliens();
     this.initScoreAndHealth();
     this.initHealth();
   },
@@ -101,10 +104,10 @@ Asteroids.GameState = {
     //console.log('initRocks');
     this.rocks = this.add.group();
     this.rocks.enableBody = true;
-    for(var i = 0; i < 10; i++){
+    for(var i = 0; i < 50; i++){
       //console.log("rock created");
-      var randomX = Math.floor((Math.random()* 400)+ 100);
-      var randomY = Math.floor(Math.random()* 300);
+      var randomX = Math.floor((Math.random()* 900)+ 100);
+      var randomY = Math.floor(Math.random()* 900);
       //console.log("ROCK: " + randomX + ":" + randomY);
       var rock = new Asteroids.Rock(this.game, randomX, randomY);
       this.rocks.add(rock);
@@ -119,11 +122,11 @@ Asteroids.GameState = {
     this.Bullets = this.add.group();
     this.Bullets.enableBody = true;
   },
-  initAliens: function(){
-    this.Aliens = this.add.group();
+  addAlien: function(){
     this.Aliens.enableBody = true;
-    var alien = new Asteroids.Alien(this.game ,100, 100);
+    var alien = new Asteroids.Alien(this.game ,1000, Math.random()*500);
     this.Aliens.add(alien);
+
   },
   initHealth: function(){
     this.health = this.add.group();
@@ -167,8 +170,8 @@ Asteroids.GameState = {
     emitter.gravity = 0;
     emitter.start(true, 500, null, 100);
 
-    rock.body.x = 500;
-    rock.body.y = Math.floor(Math.random()* 300);
+    rock.body.x = 900;
+    rock.body.y = Math.floor(Math.random()* 700);
 
     //update players score
     this.score += 100;
@@ -184,7 +187,7 @@ Asteroids.GameState = {
       }
       this.playerHurtSound.play();
       this.player.health -= 10;
-      if(this.player.health <= 90){
+      if(this.player.health <= 0){
         this.playerDead(player);
       }
       this.player.invincible = true;
@@ -210,7 +213,7 @@ Asteroids.GameState = {
   },
 
   resetGame: function(){
-   this.game.state.start("MenuState")
+   this.game.state.start("InputScoreState");
   },
 
   playerRecover: function(player, healthUp){

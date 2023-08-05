@@ -56,20 +56,7 @@ Asteroids.Alien.prototype.update = function(){
 
   //alien goes out of bounds
   if(this.body.x <= -20){
-    this.health = 100;
-    this.yHolder = 0;
-    this.body.x = 600;
-    if(this.getRandomY() == 1){
-      this.motionHolder = 0;
-      this.body.y = 50;
-    }else if(this.getRandomY() == 2){
-      this.motionHolder = 1;
-      this.body.y = 150;
-    }else{
-      this.motionHolder = 0;
-      this.body.y = 250;
-    }
-    console.log(this.body.y);
+   this.destroy();
   }
 }
 
@@ -87,8 +74,7 @@ Asteroids.Alien.prototype.damage = function() {
       emitter.maxParticleSpeed.setTo(50, 50);
       emitter.gravity = 0;
       emitter.start(true, 500, null, 100);
-      this.reset(600, 150);
-      this.health = 100;
+      this.destroy();
     }
   }
 }

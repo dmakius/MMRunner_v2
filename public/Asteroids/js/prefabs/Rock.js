@@ -14,8 +14,8 @@ Asteroids.Rock.prototype.constructor = Asteroids.Rock;
 
 Asteroids.Rock.prototype.update = function(){
   if(this.body.x <= -20){
-    var randomY = Math.floor(Math.random()* 200 + 50);
-    this.body.x = 500;
+    var randomY = Math.floor(Math.random()* 700 + 50);
+    this.body.x = 900;
     this.body.y = randomY;
   }
 }

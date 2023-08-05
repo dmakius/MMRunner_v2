@@ -26,7 +26,7 @@ Asteroids.MenuState = {
   update: function(){
     if(this.start.isDown){
       this.intoMusic.stop();
-      this.game.state.start("InputScoreState");
+      this.game.state.start("GameState");
     }
   }
 }
